@@ -153,7 +153,7 @@ app.get('/smssent', function(req, res) {
           err.status = 400;
           contexts.splice(contextIndex,1);
           // Twilio Credentials
-          var accountSid = /*INSERT TWILIO CREDENTIALS*/';
+          var accountSid = /*INSERT TWILIO CREDENTIALS*/;
           var authToken = /*INSERT TWILIO CREDENTIALS*/;
 
             //require the Twilio module and create a REST client

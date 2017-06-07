@@ -73,8 +73,8 @@ app.get('/smssent', function(req, res) {
   console.log('Recieved message from ' + number + ' saying \'' + message  + '\'');
 
   var conversation = new ConversationV1({
-    username: '77eaca2f-21d9-4921-970a-c61543dd2dd4',
-    password: 'L6FTdKjnHqh1',
+    username: /*INSERT CONVERSATION CREDENTIALS*/,
+    password: /*INSERT CONVERSATION CREDENTIALS*/,
     version_date: ConversationV1.VERSION_DATE_2016_09_20
   });
 
@@ -82,7 +82,7 @@ app.get('/smssent', function(req, res) {
     //console.log(contexts.length);
   conversation.message({
     input: { text: message },
-    workspace_id: '3af8e4c2-930d-4ff5-86c5-28031c9f1e8f',
+    workspace_id: /*INSERT WORKSPACE ID*/,
     context: context
     },
     function(err, response) {
@@ -105,8 +105,8 @@ app.get('/smssent', function(req, res) {
           }
 
           var client = require('twilio')(
-            'ACd10b0a1297a7e73e7d7c633214f7fc95',
-            '28a647a13b3d5524e1fa2caff79c7f7b'
+            /*INSERT TWILIO CREDENTIALS*/,
+            /*INSERT TWILIO CREDENTIALS*/
           );
 
           client.messages.create({
@@ -153,14 +153,14 @@ app.get('/smssent', function(req, res) {
           err.status = 400;
           contexts.splice(contextIndex,1);
           // Twilio Credentials
-          var accountSid = 'ACd10b0a1297a7e73e7d7c633214f7fc95';
-          var authToken = '28a647a13b3d5524e1fa2caff79c7f7b';
+          var accountSid = /*INSERT TWILIO CREDENTIALS*/';
+          var authToken = /*INSERT TWILIO CREDENTIALS*/;
 
             //require the Twilio module and create a REST client
           var client = require('twilio')(accountSid, authToken);
           client.messages.create({
             to: number,
-            from: "+14695073885",
+            from: /*INSERT PHONE NUMBER*/,
             body: 'SORRY, YOUR MESSAGE MAY HAVE HAD A TYPO OR OUR BOT MAY NOT HAVE BEEN ABLE TO UNDERSTAND YOUR QUESTION/ANSWER. WE HAVE NOTIFIED ONE OF OUR HR REPS TO ASSIST YOU.',
           }, function(err, messageErr) {
                 console.log(messageErr.sid);
@@ -171,14 +171,14 @@ app.get('/smssent', function(req, res) {
                  var error = message;
                  var autoMessage = "There has been an error at " + number + " ,please go check to see if anything has been resolved. This is the message that caused the error, " + message;
                              // Twilio Credentials
-                 var accountSid = 'ACd10b0a1297a7e73e7d7c633214f7fc95';
-                 var authToken = '28a647a13b3d5524e1fa2caff79c7f7b';
+                 var accountSid = /*INSERT TWILIO CREDENTIALS*/;
+                 var authToken = /*INSERT TWILIO CREDENTIALS*/;
 
                              //require the Twilio module and create a REST client
                  var client = require('twilio')(accountSid, authToken);
                  client.messages.create({
-                     to: "+19728779406",
-                     from: "+14695073885",
+                     to: /*INSERT PHONE NUMBER*/,
+                     from: /*INSERT PHONE NUMBER*/,
                      body: autoMessage,
                  }, function(err, messageErr) {
                      console.log(messageErr.sid);
@@ -226,18 +226,18 @@ app.get('/smssent', function(req, res) {
       var smshelpNumber = req.query.From;
       var smshelpMessage = req.query.Body;
 
-      if(smshelpNumber === "+19729714143") {
-        var smsFrom = "+19728779406";
+      if(smshelpNumber === /*INSERT PHONE NUMBER*/) {
+        var smsFrom = /*INSERT PHONE NUMBER*/;
       }else{
-        var smsFrom = "+19729714143";
+        var smsFrom = /*INSERT PHONE NUMBER*/;
       }
 
       console.log("this is the smshelpNumber" + smshelpNumber);
       console.log("this is the smshelpTo" + smshelpTo);
       console.log("this is the smshelpMessage" + smshelpMessage);
 
-      var accountSid = 'ACd10b0a1297a7e73e7d7c633214f7fc95';
-      var authToken = '28a647a13b3d5524e1fa2caff79c7f7b';
+      var accountSid = /*INSERT TWILIO CREDENTIALS*/;
+      var authToken = /*INSERT TWILIO CREDENTIALS*/;
 
       //require the Twilio module and create a REST client
       var client = require('twilio')(accountSid, authToken);
@@ -267,7 +267,7 @@ app.get('/smssent', function(req, res) {
                             return;
                         }, 1000);
                       }
-                      if(smshelpNumber === "+19729714143") {
+                      if(smshelpNumber === /*INSERT PHONE NUMBER*/) {
                         countdown('clock', 0, 5);
                       }
 
@@ -281,10 +281,10 @@ app.get('/smssent', function(req, res) {
                     var miaMessage;
                 //This is the function that is in the setInterval function above
                     function noResponse() {
-                      if (time === 0 && responseNumber != "+19728779406") {
+                      if (time === 0 && responseNumber != /*INSERT PHONE NUMBER*/) {
                         // Twilio Credentials
-                         var accountSid = 'ACd10b0a1297a7e73e7d7c633214f7fc95';
-                         var authToken = '28a647a13b3d5524e1fa2caff79c7f7b';
+                         var accountSid = /*INSERT TWILIO CREDENTIALS*/;
+                         var authToken = /*INSERT TWILIO CREDENTIALS*/;
                          console.log("Hello I am the function please")
                          miaMessage = 'Sorry the HR rep is busy at the moment. We will try to get back to you very soon!';
                          miaMessage;
@@ -292,7 +292,7 @@ app.get('/smssent', function(req, res) {
                          var client = require('twilio')(accountSid, authToken);
                          client.messages.create({
                            to: smshelpNumber, //get another number
-                           from: "+14695073885",
+                           from: /*INSERT PHONE NUMBER*/,
                            body: miaMessage,
                          }, function(err, messageErr) {
                       });
@@ -333,8 +333,8 @@ app.get('/smssent', function(req, res) {
       if (intentValNumber > 0) {
         const text_to_speech = new TextToSpeechV1({
             url: "https://stream.watsonplatform.net/text-to-speech/api",
-            username: '4f72e61f-65f6-4da3-9346-06c407d1f8dc',
-            password: '68G6KkXiXHKP',
+            username: /*INSERT TEXT TO SPEECH CREDENTIALS*/,
+            password: /*INSERT TEXT TO SPEECH CREDENTIALS*/,
             version_date: TextToSpeechV1.VERSION_DATE_2017_04_26
           });
           var params = {
@@ -357,8 +357,8 @@ app.get('/smssent', function(req, res) {
     console.log("you have established a connection with sockets");
 
     var authorization = new watson.AuthorizationV1({
-       username: '630b3e9b-cd12-4c2d-96fb-5965627118a3',
-       password: 'l6jlKC5DYxpc',
+       username: /*INSERT CREDENTIALS*/,
+       password: /*INSERT CREDENTIALS*/,
        url: watson.SpeechToTextV1.URL
      });
 
@@ -411,8 +411,8 @@ app.get('/smssent', function(req, res) {
    //text to speech portion
        const text_to_speech = new TextToSpeechV1({
            url: "https://stream.watsonplatform.net/text-to-speech/api",
-           username: '4f72e61f-65f6-4da3-9346-06c407d1f8dc',
-           password: '68G6KkXiXHKP',
+           username: /*INSERT TEXT TO SPEECH CREDENTIALS*/,
+           password: /*INSERT TEXT TO SPEECH CREDENTIALS*/,
            version_date: TextToSpeechV1.VERSION_DATE_2017_04_26
          });
 
@@ -436,14 +436,14 @@ app.get('/smssent', function(req, res) {
    console.log('Recieved message from ' + internetProtocol + ' saying \'' + transcript  + '\'');
 
    var conversation = new ConversationV1({
-     username: '77eaca2f-21d9-4921-970a-c61543dd2dd4',
-     password: 'L6FTdKjnHqh1',
+     username: /*INSERT CONVERSATION CREDENTIALS*/,
+     password: /*INSERT CONVERSATION CREDENTIALS*/,
      version_date: ConversationV1.VERSION_DATE_2016_09_20
    });
 
    conversation.message({
      input: { text: transcript },
-     workspace_id: 'ce136919-2836-4e9e-95a8-9aa013967e3f',
+     workspace_id: /*INSERT WORKSPACE ID*/,
      context: context
      },
      function(err, response) {

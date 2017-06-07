@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .main.container.row
+    .col-md-6.col-md-offset-3
+      h1.display-4.m-b-2 View DB info!
+      a(href="http://localhost:3000/query")
+        button.btn.btn-primary(type='button') Search for specific information NOW!
+      .nk-message-name #{messages}

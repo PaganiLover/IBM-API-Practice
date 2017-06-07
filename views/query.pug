@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .main.container.row
+    .col-md-6.col-md-offset-3
+      a(href="http://localhost:3000/Database")
+        button.btn.btn-primary(type='button') Back
+      h1.display-4.m-b-2 View Specific DB info!
+      form(method='POST' action='/query')
+        div.form-group
+          label(for='dateQuery') Search a number:
+          input#dateQuery.form-control(type='text', placeholder='Type +1 before beginning the number' name='dateQuery')
+          button.btn.btn-primary(type='submit') Search
+          //- div.form-group
+          //- label(for='DateQuery1') Search a date:
+          //- input#DateQuery1.form-control(type='text', placeholder='Type a date ex: m/d/yyyy' name='DateQuery1')
+          //- button.btn.btn-primary(type='submit') Search
+
+      .nk-message-name #{messages}

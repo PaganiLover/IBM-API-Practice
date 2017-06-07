@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+  .main.container.row
+    .col-md-6.col-md-offset-3
+      h1.display-4.m-b-2 Magic Listening!
+      form(method="GET" action="/speechtotext")
+          button#Startbtn.btn.btn-primary(type='button') START MIC
+          button#Stopbtn.btn.btn-primary(type='button') STOP MIC
+          - var text = transcription
+          textarea#output(rows=10).form-control= text
+          script(src="/socket.io/socket.io.js")
+          script
+            | var socket = io('http://localhost:3000')
+          script(src="../bundle.js")

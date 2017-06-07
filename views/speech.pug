@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .main.container.row
+    .col-md-6.col-md-offset-3
+      h1.display-4.m-b-2 Magic Reading!
+      form(method="GET" action="/speech")
+        div.form-group
+          label(for='speech') Type something to be spoken:
+          input#speech.form-control(type='text', placeholder='Type something to be read' name='speech')
+          button.btn.btn-primary(type='submit') Submit Audio
+          a(href="http://localhost:3000/speech")
+            button.btn.btn-primary(type='submit') LISTEN!
+              audio(autoplay='' preload="auto")
+                source(src='../output.ogg?ver= ' + version, type='audio/ogg;codecs')
